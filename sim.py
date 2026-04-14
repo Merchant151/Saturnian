@@ -1,8 +1,19 @@
 from datetime import datetime 
+GID = 0
 population = 0
 prefix = ['united','coeltion'];
 sufix = ['saturn','conglomerate'];
 factions = [];
+
+class world_object():
+    def init(self):
+    self.GID = next_id()
+
+
+def next_id():
+    global GID
+    GID = GID + 1 
+    return GID 
 
 def generate_faction_name(): 
     return 'United Saturn'
