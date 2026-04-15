@@ -13,6 +13,8 @@ class world_object():
 def next_id():
     global GID
     GID = GID + 1 
+    1
+
     return GID 
 
 def generate_faction_name(): 
