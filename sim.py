@@ -7,13 +7,21 @@ factions = [];
 
 class world_object():
     def init(self):
-    self.GID = next_id()
+        self.GID = next_id()
+        self.location = ('saturn','orbit')
+        self.status = 'idle'
+        self.name = 'spaceship'
+        self.modules = []
+        self.inventory = []
+
+    def destroy():
+        console.log('create remove from world memory')
+
 
 
 def next_id():
     global GID
     GID = GID + 1 
-    1
 
     return GID 
 
