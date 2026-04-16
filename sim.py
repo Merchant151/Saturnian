@@ -15,8 +15,11 @@ class world_object():
         self.inventory = []
 
     def destroy():
-        console.log('create remove from world memory')
-
+        print('create remove from world memory')
+    def schedule(): 
+        print('create schedule event to world data')
+    def unschedule():
+        print('unshceudle event from world ')
 
 
 def next_id():
@@ -44,11 +47,13 @@ def prefix():
     return world
 
 def main():
+    global world_data
     current_day = start_date
     while(current_day < start_date + max_date * day * 365):
         print('today is: ',end = '')
         print(datetime.fromtimestamp(current_day))
         current_day = current_day + day
+    print(world_data)
 
 
 world_data = prefix()
