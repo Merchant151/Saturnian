@@ -6,6 +6,7 @@ sufix = ['saturn','conglomerate'];
 factions = [];
 
 class world_object():
+
     def init(self):
         self.GID = next_id()
         self.location = ('saturn','orbit')
@@ -19,18 +20,20 @@ class world_object():
     def schedule(): 
         print('create schedule event to world data')
     def unschedule():
-        print('unshceudle event from world ')
+        print('unshceudle event from world')
 
 
 def next_id():
     global GID
-    GID = GID + 1 
+    GID = GID + 1
 
-    return GID 
+    return GID
 
 def generate_faction_name(): 
     return 'United Saturn'
 
+def roll_random_event(world_data,register):
+    print('roll random event')
 
 # a loop start date end date 
 # log to a history folder 
@@ -48,10 +51,12 @@ def prefix():
 
 def main():
     global world_data
+    register = [] # register is where we will store location check data and future data
     current_day = start_date
     while(current_day < start_date + max_date * day * 365):
         print('today is: ',end = '')
         print(datetime.fromtimestamp(current_day))
+        roll_random_event(world_data,register)
         current_day = current_day + day
     print(world_data)
 
