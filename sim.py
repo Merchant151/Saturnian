@@ -1,4 +1,5 @@
 from datetime import datetime 
+from random import randrange
 GID = 0
 population = 0
 prefix = ['united','coeltion'];
@@ -33,7 +34,17 @@ def generate_faction_name():
     return 'United Saturn'
 
 def roll_random_event(world_data,register):
-    print('roll random event')
+    chance = randrange(0,100)
+    if chance < 5:
+        print('spawn a ship 5 percent chance')
+    elif chance < 15:
+        print('10 percent chance')
+    elif chance > 99:
+        print('1 percent chance')
+    elif chance >98: 
+        chance = randrange(0,100)
+        if chance < 2:
+            print('0.01 percent chance')
 
 # a loop start date end date 
 # log to a history folder 
