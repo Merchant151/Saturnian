@@ -8,7 +8,7 @@ factions = [];
 
 class world_object():
 
-    def init(self):
+    def __init__(self):
         self.GID = next_id()
         self.location = ('saturn','orbit')
         self.status = 'idle'
@@ -16,6 +16,8 @@ class world_object():
         self.modules = []
         self.inventory = []
 
+    def __repr__(self): 
+        return f"name: '{self.name}'ID:{self.GID}"
     def destroy():
         print('create remove from world memory')
     def schedule(): 
@@ -37,14 +39,19 @@ def roll_random_event(world_data,register):
     chance = randrange(0,100)
     if chance < 5:
         print('spawn a ship 5 percent chance')
+        world_data['ship'].append(spawn_ship())
     elif chance < 15:
         print('10 percent chance')
-    elif chance > 99:
+    elif chance > 98:
         print('1 percent chance')
-    elif chance >98: 
+    elif chance >97: 
         chance = randrange(0,100)
-        if chance < 2:
+        if chance < 1:
             print('0.01 percent chance')
+
+def spawn_ship():
+    new_ship = world_object()
+    return new_ship
 
 # a loop start date end date 
 # log to a history folder 
@@ -58,6 +65,7 @@ def prefix():
     world = {}
     planet = {"saturn" : {"major_moons": ["Titan",'Rhea',"Iapetus","Dione","Tethys"],"minor_moons":["Enceladus","Mimas","Hyperion","Phoebe","Janus","Epimetheus"]}}
     world["locale"] = planet
+    world["ship"] = []
     return world
 
 def main():
