@@ -13,6 +13,7 @@ class world_object():
         self.location = ('saturn','orbit')
         self.status = 'idle'
         self.name = 'spaceship'
+        self.type = 'unknown'
         self.modules = []
         self.inventory = []
 
@@ -20,11 +21,20 @@ class world_object():
         return f"name: '{self.name}'ID:{self.GID}"
     def destroy():
         print('create remove from world memory')
-    def schedule(): 
+    def schedule(date,action): 
         print('create schedule event to world data')
     def unschedule():
         print('unshceudle event from world')
 
+class ship(world_object):
+    def __init__(self):
+        super().__init__()
+        type = 'ship'
+
+    travel_drive(destination):
+        print(f'ship is traveling from {self.location[1]} at {self.location[0]} to {destination[1]} at {destination[0]}')
+        self.status = 'travel'
+        schedule()
 
 def next_id():
     global GID
@@ -50,7 +60,7 @@ def roll_random_event(world_data,register):
             print('0.01 percent chance')
 
 def spawn_ship():
-    new_ship = world_object()
+    new_ship = ship()
     return new_ship
 
 # a loop start date end date 
