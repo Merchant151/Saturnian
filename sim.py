@@ -16,6 +16,8 @@ class world_object():
         self.type = 'unknown'
         self.modules = []
         self.inventory = []
+        self.myHolds = {}
+        self.behaviorStage = 0
 
     def __repr__(self): 
         return f"name: '{self.name}'ID:{self.GID}"
@@ -29,9 +31,19 @@ class world_object():
 class ship(world_object):
     def __init__(self):
         super().__init__()
-        type = 'ship'
+        self.type = 'ship'
+        #Behavior Values 
+        self.idle = randrange(0,10) 
+        self.explore = randrange(0,10)
 
-    travel_drive(destination):
+        #pick starting behavior 
+        pickBehavior()
+
+    def pickBehavior():
+        print('pick random behavior')
+        #TODO: implement
+
+    def travel_drive(destination):
         print(f'ship is traveling from {self.location[1]} at {self.location[0]} to {destination[1]} at {destination[0]}')
         self.status = 'travel'
         schedule()
@@ -75,7 +87,8 @@ def prefix():
     world = {}
     planet = {"saturn" : {"major_moons": ["Titan",'Rhea',"Iapetus","Dione","Tethys"],"minor_moons":["Enceladus","Mimas","Hyperion","Phoebe","Janus","Epimetheus"]}}
     world["locale"] = planet
-    world["ship"] = []
+    world["object"] = []
+    world["holds"] = {}
     return world
 
 def main():
