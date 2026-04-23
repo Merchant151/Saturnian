@@ -37,9 +37,9 @@ class ship(world_object):
         self.explore = randrange(0,10)
 
         #pick starting behavior 
-        pickBehavior()
+        self.pickBehavior()
 
-    def pickBehavior():
+    def pickBehavior(self):
         print('pick random behavior')
         #TODO: implement
 
@@ -61,7 +61,7 @@ def roll_random_event(world_data,register):
     chance = randrange(0,100)
     if chance < 5:
         print('spawn a ship 5 percent chance')
-        world_data['ship'].append(spawn_ship())
+        world_data['object'].append(spawn_ship())
     elif chance < 15:
         print('10 percent chance')
     elif chance > 98:
