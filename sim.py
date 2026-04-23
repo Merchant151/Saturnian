@@ -42,6 +42,16 @@ class ship(world_object):
     def pickBehavior(self):
         print('pick random behavior')
         #TODO: implement
+        if self.idle <= self.explore:
+            self.explore_behavior()
+        else: 
+            self.idle_behavior()
+
+    def explore_behavior(self):
+        print('the ship will begin exploring')
+
+    def idle_behavior(self):
+        print('the ship will begin repairs')
 
     def travel_drive(destination):
         print(f'ship is traveling from {self.location[1]} at {self.location[0]} to {destination[1]} at {destination[0]}')
