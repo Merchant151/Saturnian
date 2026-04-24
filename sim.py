@@ -50,6 +50,7 @@ class ship(world_object):
     def explore_behavior(self):
         print('the ship will begin exploring')
 
+        schedule(6,'end_explore')
     def idle_behavior(self):
         print('the ship will begin repairs')
 
