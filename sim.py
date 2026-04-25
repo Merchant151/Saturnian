@@ -26,10 +26,12 @@ class world_object():
     def schedule(self,date,action): 
         print('create schedule event to world data')
         #TODO: implement
-        global date_time
+        global current_day 
         global world_data
-        date += datetime
-        world_data['schedule'] = {date, action}
+        date += current_day
+        future_actions = world_data['schedule'].get(date,[])
+        future_actions.append((self.GID,action))
+        world_data['schedule'][date] = future_actions
     def unschedule(self):
         print('unshceudle event from world')
 
@@ -104,11 +106,12 @@ def prefix():
     planet = {"saturn" : {"major_moons": ["Titan",'Rhea',"Iapetus","Dione","Tethys"],"minor_moons":["Enceladus","Mimas","Hyperion","Phoebe","Janus","Epimetheus"]}}
     world["locale"] = planet
     world["object"] = []
-    world["holds"] = {}
+    world["schedule"] = {}
     return world
 
 def main():
     global world_data
+    global current_day
     register = [] # register is where we will store location check data and future data
     current_day = start_date
     while(current_day < start_date + max_date * day * 365):
