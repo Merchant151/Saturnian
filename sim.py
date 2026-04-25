@@ -23,9 +23,14 @@ class world_object():
         return f"name: '{self.name}'ID:{self.GID}"
     def destroy():
         print('create remove from world memory')
-    def schedule(date,action): 
+    def schedule(self,date,action): 
         print('create schedule event to world data')
-    def unschedule():
+        #TODO: implement
+        global date_time
+        global world_data
+        date += datetime
+        world_data['schedule'] = {date, action}
+    def unschedule(self):
         print('unshceudle event from world')
 
 class ship(world_object):
@@ -41,16 +46,16 @@ class ship(world_object):
 
     def pickBehavior(self):
         print('pick random behavior')
-        #TODO: implement
         if self.idle <= self.explore:
             self.explore_behavior()
         else: 
             self.idle_behavior()
 
     def explore_behavior(self):
+        #TODO: implement
         print('the ship will begin exploring')
 
-        schedule(6,'end_explore')
+        self.schedule(6,'end_explore')
     def idle_behavior(self):
         print('the ship will begin repairs')
 
