@@ -26,8 +26,10 @@ class world_object():
     def schedule(self,date,action): 
         print('create schedule event to world data')
         #TODO: implement
+        global day
         global current_day 
         global world_data
+        date *= day
         date += current_day
         future_actions = world_data['schedule'].get(date,[])
         future_actions.append((self.GID,action))
@@ -54,10 +56,9 @@ class ship(world_object):
             self.idle_behavior()
 
     def explore_behavior(self):
-        #TODO: implement
         print('the ship will begin exploring')
-
         self.schedule(6,'end_explore')
+
     def idle_behavior(self):
         print('the ship will begin repairs')
 
@@ -109,6 +110,13 @@ def prefix():
     world["schedule"] = {}
     return world
 
+def check_date(current_day,world_data):
+    if current_day in world_data['schedule']:
+        print('event_today: ',end='')
+        print(world_data['schedule'][current_day])
+        print(world_data['schedule'][current_day][0])
+    else: 
+        print('nothing scheduled')
 def main():
     global world_data
     global current_day
@@ -118,6 +126,7 @@ def main():
         print('today is: ',end = '')
         print(datetime.fromtimestamp(current_day))
         roll_random_event(world_data,register)
+        check_date(current_day,world_data)
         current_day = current_day + day
     print(world_data)
 
