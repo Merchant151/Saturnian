@@ -25,7 +25,6 @@ class world_object():
         print('create remove from world memory')
     def schedule(self,date,action): 
         print('create schedule event to world data')
-        #TODO: implement
         global day
         global current_day 
         global world_data
@@ -112,9 +111,14 @@ def prefix():
 
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
+        #TODO: implement
         print('event_today: ',end='')
         print(world_data['schedule'][current_day])
         print(world_data['schedule'][current_day][0])
+        todays_events = world_data['schedule'][current_day]
+        number_of_events = len(todays_events)
+        for i in range(number_of_events)
+            print(todays_events[i])
     else: 
         print('nothing scheduled')
 def main():
