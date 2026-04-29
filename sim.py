@@ -109,16 +109,24 @@ def prefix():
     world["schedule"] = {}
     return world
 
+def get_object_by_id(world_data,id):
+    for obj in world_data['object']:
+        if(obj.GID == id):
+            return obj
+    raise Exception('game object not found')
+
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
         #TODO: implement
         print('event_today: ',end='')
-        print(world_data['schedule'][current_day])
-        print(world_data['schedule'][current_day][0])
+        ##print(world_data['schedule'][current_day])
+        ##print(world_data['schedule'][current_day][0])
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
-        for i in range(number_of_events)
+        for i in range(number_of_events):
             print(todays_events[i])
+            print('ship that had event:')
+            actor = get_object_by_id(world_data, id)
     else: 
         print('nothing scheduled')
 def main():
@@ -133,7 +141,6 @@ def main():
         check_date(current_day,world_data)
         current_day = current_day + day
     print(world_data)
-
 
 world_data = prefix()
 main()
