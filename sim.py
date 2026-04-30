@@ -110,7 +110,10 @@ def prefix():
     return world
 
 def get_object_by_id(world_data,id):
+    print('printing object list')
     for obj in world_data['object']:
+        print(obj)
+        print(vars(obj))
         if(obj.GID == id):
             return obj
     raise Exception('game object not found')
