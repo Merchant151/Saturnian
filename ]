@@ -1,6 +1,6 @@
 from datetime import datetime 
 from random import randrange
-gid = 0
+GID = 0
 population = 0
 prefix = ['united','coeltion'];
 sufix = ['saturn','conglomerate'];
@@ -9,7 +9,7 @@ factions = [];
 class world_object():
 
     def __init__(self):
-        self.gid = next_id()
+        self.GID = next_id()
         self.location = ('saturn','orbit')
         self.status = 'idle'
         self.name = 'spaceship'
@@ -20,7 +20,7 @@ class world_object():
         self.behaviorStage = 0
 
     def __repr__(self): 
-        return f"name: '{self.name}'ID:{self.gid}"
+        return f"name: '{self.name}'ID:{self.GID}"
     def destroy():
         print('create remove from world memory')
     def schedule(self,date,action): 
@@ -31,7 +31,7 @@ class world_object():
         date *= day
         date += current_day
         future_actions = world_data['schedule'].get(date,[])
-        future_actions.append((self.gid,action))
+        future_actions.append((self.GID,action))
         world_data['schedule'][date] = future_actions
     def unschedule(self):
         print('unshceudle event from world')
@@ -67,10 +67,10 @@ class ship(world_object):
         schedule()
 
 def next_id():
-    global gid
-    gid = gid + 1
+    global GID
+    GID = GID + 1
 
-    return gid
+    return GID
 
 def generate_faction_name(): 
     return 'United Saturn'
@@ -115,7 +115,7 @@ def get_object_by_id(world_data,id):
         print(obj)
         print(type(obj))
         print(vars(obj))
-        if(obj.gid == id):
+        if(obj.GID == id):
             return obj
     raise Exception('game object not found')
 
