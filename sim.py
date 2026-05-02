@@ -114,7 +114,13 @@ def get_object_by_id(world_data,id):
     for obj in world_data['object']:
         print(obj)
         print(type(obj))
-        print(vars(obj))
+        print('')
+        print('we are looking for ID: ',end='')
+        print(id)
+
+        print('the current object ID:',end='')
+        print(obj.gid,end='')
+        #print(vars(obj))
         if(obj.gid == id):
             return obj
     raise Exception('game object not found')
