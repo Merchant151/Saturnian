@@ -110,17 +110,7 @@ def prefix():
     return world
 
 def get_object_by_id(world_data,id):
-    print('printing object list')
     for obj in world_data['object']:
-        print(obj)
-        print(type(obj))
-        print('')
-        print('we are looking for ID: ',end='')
-        print(id)
-
-        print('the current object ID:',end='')
-        print(obj.gid,end='')
-        #print(vars(obj))
         if(obj.gid == id):
             return obj
     raise Exception('game object not found')
@@ -135,10 +125,14 @@ def check_date(current_day,world_data):
         number_of_events = len(todays_events)
         for i in range(number_of_events):
             print(todays_events[i])
-            print('ship that had event:')
+            id = todays_events[i][0]
             actor = get_object_by_id(world_data, id)
+            #do event change status...
+            #remove event from event list. 
+        return world_data
     else: 
         print('nothing scheduled')
+        return world_data
 def main():
     global world_data
     global current_day
