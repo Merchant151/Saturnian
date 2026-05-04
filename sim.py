@@ -115,7 +115,11 @@ def get_object_by_id(world_data,id):
             return obj
     raise Exception('game object not found')
 
-#def remove_event_from_world_data(world_data,event,current_day):
+def remove_event_from_world_data(world_data,event,current_day):
+    world_data['schedule'][current_day].remove(event)
+    if len(world_data['schedule'][current_day]) < 1:
+        print('all events today have been processed')
+        del world_data['schedule'][current_day]
 
 
 
@@ -132,7 +136,7 @@ def check_date(current_day,world_data):
             print(todays_events[i])
             print('event happend')
             #remove event from event list. 
-            world_data['schedule'][current_day].remove(todays_events[i])
+            remove_event_from_world_data(world_data,todays_events[i],current_day)
 
     else: 
         print('nothing scheduled')
