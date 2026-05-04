@@ -115,24 +115,28 @@ def get_object_by_id(world_data,id):
             return obj
     raise Exception('game object not found')
 
+#def remove_event_from_world_data(world_data,event,current_day):
+
+
+
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
         #TODO: implement
         print('event_today: ',end='')
-        ##print(world_data['schedule'][current_day])
-        ##print(world_data['schedule'][current_day][0])
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
         for i in range(number_of_events):
-            print(todays_events[i])
             id = todays_events[i][0]
             actor = get_object_by_id(world_data, id)
             #do event change status...
+            print(todays_events[i])
+            print('event happend')
             #remove event from event list. 
-        return world_data
+            world_data['schedule'][current_day].remove(todays_events[i])
+
     else: 
         print('nothing scheduled')
-        return world_data
+    return world_data
 def main():
     global world_data
     global current_day
