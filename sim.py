@@ -35,6 +35,8 @@ class world_object():
         world_data['schedule'][date] = future_actions
     def unschedule(self):
         print('unshceudle event from world')
+    def process_event(self,event):
+        print(f'Object {self.name} processes {event}')
 
 class ship(world_object):
     def __init__(self):
@@ -43,7 +45,7 @@ class ship(world_object):
         #Behavior Values 
         self.idle = randrange(0,10) 
         self.explore = randrange(0,10)
-
+        
         #pick starting behavior 
         self.pickBehavior()
 
@@ -57,6 +59,9 @@ class ship(world_object):
     def explore_behavior(self):
         print('the ship will begin exploring')
         self.schedule(6,'end_explore')
+
+    def process_event(self,event):
+        print(f'Object {self.name} processes {event}')
 
     def idle_behavior(self):
         print('the ship will begin repairs')
@@ -130,11 +135,11 @@ def check_date(current_day,world_data):
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
         for i in range(number_of_events):
-            id = todays_events[i][0]
+            id,event = todays_events[i]
             actor = get_object_by_id(world_data, id)
             #do event change status...
             print(todays_events[i])
-            print('event happend')
+            actor.process_event(event)
             #remove event from event list. 
             remove_event_from_world_data(world_data,todays_events[i],current_day)
 
