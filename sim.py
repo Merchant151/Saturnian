@@ -62,6 +62,14 @@ class ship(world_object):
 
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
+        if (event == 'end_explore'):
+            self.explore = 0 
+            #TODO: work on this
+            pickBehavior()
+        else: 
+            self.explore += 1
+            pickBehavior()
+
 
     def idle_behavior(self):
         print('the ship will begin repairs')
