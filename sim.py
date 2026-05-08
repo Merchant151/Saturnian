@@ -60,15 +60,20 @@ class ship(world_object):
         print('the ship will begin exploring')
         self.schedule(6,'end_explore')
 
+    def random_travel(self):
+        from = self.location  
+            #TODO: work on this
+        print(f'{name} travelled from {self.location} to {self.location}')
+
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
         if (event == 'end_explore'):
             self.explore = 0 
-            #TODO: work on this
-            pickBehavior()
+            self.random_travel()
+            self.pickBehavior()
         else: 
             self.explore += 1
-            pickBehavior()
+            self.pickBehavior()
 
 
     def idle_behavior(self):
