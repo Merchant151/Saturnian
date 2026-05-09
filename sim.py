@@ -61,9 +61,9 @@ class ship(world_object):
         self.schedule(6,'end_explore')
 
     def random_travel(self):
-        from = self.location  
-            #TODO: work on this
-        print(f'{name} travelled from {self.location} to {self.location}')
+        old = self.location  
+        #TODO: work on this
+        print(f'{self.name} travelled from {self.location} to {self.location}')
 
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
@@ -147,7 +147,8 @@ def check_date(current_day,world_data):
         print('event_today: ',end='')
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
-        for i in range(number_of_events):
+        
+        for i in range(number_of_events-1):
             id,event = todays_events[i]
             actor = get_object_by_id(world_data, id)
             #do event change status...
