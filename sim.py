@@ -143,7 +143,6 @@ def remove_event_from_world_data(world_data,event,current_day):
 
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
-        #TODO: implement
         print('event_today: ',end='')
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
