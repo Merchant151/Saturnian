@@ -143,15 +143,15 @@ def remove_event_from_world_data(world_data,event,current_day):
 
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
+        #TODO: implement
         print('event_today: ',end='')
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
-        
-        for i in range(number_of_events-1):
-            id,event = todays_events[i]
+        for i in range(number_of_events):
+            id,event = todays_events[0]
             actor = get_object_by_id(world_data, id)
             #do event change status...
-            print(todays_events[i])
+            print(todays_events[0])
             actor.process_event(event)
             #remove event from event list. 
             remove_event_from_world_data(world_data,todays_events[i],current_day)
