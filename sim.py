@@ -63,7 +63,20 @@ class ship(world_object):
     def random_travel(self):
         old = self.location  
         #TODO: work on this
-        print(f'{self.name} travelled from {self.location} to {self.location}')
+        global world_data 
+        locale = world_data['locale']['saturn']
+        dest = self.location
+        dest_type = randrange(0,1) #destination Type
+        if dest_type == 0: 
+            listlen = len(locale['major_moons'])
+            dest = locale['major_moons'][randrange(0,listlen)]
+            #for i in range(len(locale['major_moons']))
+        else:
+            lislen = len(locale['minor_moons'])
+            dest = locale['minor_moons'][randrange(0,listlen)]
+            #minor moons 
+        print(f'{self.name} travelled from {old} to {dest}')
+        
 
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
@@ -143,7 +156,6 @@ def remove_event_from_world_data(world_data,event,current_day):
 
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
-        #TODO: implement
         print('event_today: ',end='')
         todays_events = world_data['schedule'][current_day]
         number_of_events = len(todays_events)
@@ -154,7 +166,7 @@ def check_date(current_day,world_data):
             print(todays_events[0])
             actor.process_event(event)
             #remove event from event list. 
-            remove_event_from_world_data(world_data,todays_events[i],current_day)
+            remove_event_from_world_data(world_data,todays_events[0],current_day)
 
     else: 
         print('nothing scheduled')
