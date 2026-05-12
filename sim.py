@@ -75,8 +75,8 @@ class ship(world_object):
             lislen = len(locale['minor_moons'])
             dest = locale['minor_moons'][randrange(0,listlen)]
             #minor moons 
-        print(f'{self.name} travelled from {old} to {dest}')
-        
+        print(f'{self.name} travelled from a standard {old[1]} of {old[0]} to a standard {'orbit'} of {dest}')
+        self.location = (dest,'orbit')        
 
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
