@@ -39,15 +39,26 @@ class world_object():
         print(f'Object {self.name} processes {event}')
 
 class ship(world_object):
+    #TODO: working on this
     def __init__(self):
         super().__init__()
-        self.type = 'ship'
+        self.type = random_type()
         #Behavior Values 
         self.idle = randrange(0,10) 
         self.explore = randrange(0,10)
-        
         #pick starting behavior 
         self.pickBehavior()
+
+    def random_type():
+        rv = randrange(0,3)
+        if rv == 0:
+            return 'construction'
+        elif rv == 1:
+            return 'science'
+        elif rv == 2: 
+            return 'combat'
+        ##UNREACHABLE
+        return 'ship'
 
     def pickBehavior(self):
         print('pick random behavior')
@@ -62,7 +73,6 @@ class ship(world_object):
 
     def random_travel(self):
         old = self.location  
-        #TODO: work on this
         global world_data 
         locale = world_data['locale']['saturn']
         dest = self.location
@@ -70,7 +80,6 @@ class ship(world_object):
         if dest_type == 0: 
             listlen = len(locale['major_moons'])
             dest = locale['major_moons'][randrange(0,listlen)]
-            #for i in range(len(locale['major_moons']))
         else:
             lislen = len(locale['minor_moons'])
             dest = locale['minor_moons'][randrange(0,listlen)]
