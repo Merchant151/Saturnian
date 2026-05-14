@@ -46,6 +46,7 @@ class ship(world_object):
         #Behavior Values 
         self.idle = randrange(0,10) 
         self.explore = randrange(0,10)
+        self.job = randrange(0,10)
         #pick starting behavior 
         self.pickBehavior()
 
@@ -62,7 +63,9 @@ class ship(world_object):
 
     def pickBehavior(self):
         print('pick random behavior')
-        if self.idle <= self.explore:
+        if self.job >= self.explore:
+            self.job_behavior()
+        elif self.idle <= self.explore:
             self.explore_behavior()
         else: 
             self.idle_behavior()
