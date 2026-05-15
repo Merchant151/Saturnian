@@ -61,8 +61,8 @@ class ship(world_object):
         ##UNREACHABLE
         return 'ship'
 
+
     def pickBehavior(self):
-        print('pick random behavior')
         if self.job >= self.explore:
             self.job_behavior()
         elif self.idle <= self.explore:
@@ -70,8 +70,25 @@ class ship(world_object):
         else: 
             self.idle_behavior()
 
+    def job_behavior(self):
+        print(f'the ship will do {self.type} job')
+        if self.type == 'construction':
+            construction_behavior(self)
+        if self.type == 'science':
+            science_behavior(self)
+        if self.type == 'combat':
+            combat_behavior(self)
+
+    def construction_behavior(self):
+        self.schedule(6,'end_construction')
+
+    def science_behavior(self):
+        self.schedule(6,'end_science')
+
+    def combat_behavior(self):
+        self.schedule(6,'end_combat')
+
     def explore_behavior(self):
-        print('the ship will begin exploring')
         self.schedule(6,'end_explore')
 
     def random_travel(self):
