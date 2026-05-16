@@ -42,7 +42,7 @@ class ship(world_object):
     #TODO: working on this
     def __init__(self):
         super().__init__()
-        self.type = random_type()
+        self.type = self.random_type()
         #Behavior Values 
         self.idle = randrange(0,10) 
         self.explore = randrange(0,10)
@@ -50,7 +50,7 @@ class ship(world_object):
         #pick starting behavior 
         self.pickBehavior()
 
-    def random_type():
+    def random_type(self):
         rv = randrange(0,3)
         if rv == 0:
             return 'construction'
@@ -73,11 +73,11 @@ class ship(world_object):
     def job_behavior(self):
         print(f'the ship will do {self.type} job')
         if self.type == 'construction':
-            construction_behavior(self)
+            self.construction_behavior()
         if self.type == 'science':
-            science_behavior(self)
+            self.science_behavior()
         if self.type == 'combat':
-            combat_behavior(self)
+            self.combat_behavior()
 
     def construction_behavior(self):
         self.schedule(6,'end_construction')
