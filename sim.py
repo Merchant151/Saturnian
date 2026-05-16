@@ -132,6 +132,15 @@ def next_id():
 
     return gid
 
+def get_objects_with_location(location):
+    global world_data
+    objects = world_data['object']
+    out_list = []
+    for i in objects:
+        if location == i.location:
+            out_list.append(i)
+    return out_list
+
 def generate_faction_name(): 
     return 'United Saturn'
 
