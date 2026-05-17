@@ -38,6 +38,12 @@ class world_object():
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
 
+    def destroy(self):
+        #any object can be destroyed! 
+        #TODO:
+        #remove object from world data 
+        print(f'{self} has been destroyed!')
+
 class ship(world_object):
     #TODO: working on this
     def __init__(self):
@@ -86,7 +92,13 @@ class ship(world_object):
         self.schedule(6,'end_science')
 
     def combat_behavior(self):
-        self.schedule(6,'end_combat')
+        #self.schedule(2,'end_combat')
+        #get targets
+        target_list = get_objects_with_location(self.location)
+        target = self.pick_target(target_list)
+        print(f'{self} has destroyed {target}' )
+        target.destroy()
+        self.idle_behavior()
 
     def explore_behavior(self):
         self.schedule(6,'end_explore')
@@ -117,8 +129,14 @@ class ship(world_object):
             self.explore += 1
             self.pickBehavior()
 
+    def pick_target(self,targetList):
+        #in the future this should be random or based on another attribute
+        return targetList[0]
+
 
     def idle_behavior(self):
+        #TODO: 
+        #change this to schedule behavior 
         print('the ship will begin repairs')
 
     def travel_drive(destination):
