@@ -97,6 +97,7 @@ class ship(world_object):
         target_list = get_objects_with_location(self.location)
         target = self.pick_target(target_list)
         print(f'{self} has destroyed {target}' )
+        self.job = 0
         target.destroy()
         self.idle_behavior()
 
@@ -121,11 +122,18 @@ class ship(world_object):
 
     def process_event(self,event):
         print(f'Object {self.name} processes {event}')
+        jobList = ['end_combat','end_science']
         if (event == 'end_explore'):
             self.explore = 0 
+            self.job +=1
             self.random_travel()
             self.pickBehavior()
+        elif event in jobList: 
+            self.job =0
+            self.explore = 0
+            self.idle_behavior()
         else: 
+            self.job += 1
             self.explore += 1
             self.pickBehavior()
 
