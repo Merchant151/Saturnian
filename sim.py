@@ -40,8 +40,11 @@ class world_object():
 
     def destroy(self):
         #any object can be destroyed! 
-        #TODO:
         #remove object from world data 
+        world_data['object'].remove(self)
+        #TODO:
+        ##verify this works 
+        ### unschedule ALL as well
         print(f'{self} has been destroyed!')
 
 class ship(world_object):
