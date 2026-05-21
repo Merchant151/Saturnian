@@ -21,8 +21,10 @@ class world_object():
 
     def __repr__(self): 
         return f"name: '{self.name}'ID:{self.gid}"
+
     def destroy():
         print('create remove from world memory')
+
     def schedule(self,date,action): 
         print('create schedule event to world data')
         global day
@@ -33,6 +35,7 @@ class world_object():
         future_actions = world_data['schedule'].get(date,[])
         future_actions.append((self.gid,action))
         world_data['schedule'][date] = future_actions
+
     def unschedule(self):
         print('unshceudle event from world')
     def process_event(self,event):
@@ -80,7 +83,7 @@ class ship(world_object):
             self.idle_behavior()
 
     def job_behavior(self):
-        print(f'the ship will do {self.type} job')
+        print(f'the ship:{self.gid} will do {self.type} job')
         if self.type == 'construction':
             self.construction_behavior()
         if self.type == 'science':
@@ -148,7 +151,7 @@ class ship(world_object):
     def idle_behavior(self):
         #TODO: 
         #change this to schedule behavior 
-        print('the ship will begin repairs')
+        print(f'the ship:{self.gid} will begin repairs')
 
     def travel_drive(destination):
         print(f'ship is traveling from {self.location[1]} at {self.location[0]} to {destination[1]} at {destination[0]}')
@@ -230,7 +233,6 @@ def check_date(current_day,world_data):
             id,event = todays_events[0]
             actor = get_object_by_id(world_data, id)
             #do event change status...
-            print(todays_events[0])
             actor.process_event(event)
             #remove event from event list. 
             remove_event_from_world_data(world_data,todays_events[0],current_day)
