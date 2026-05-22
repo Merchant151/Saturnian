@@ -101,10 +101,13 @@ class ship(world_object):
         #self.schedule(2,'end_combat')
         #get targets
         target_list = get_objects_with_location(self.location)
-        target = self.pick_target(target_list)
-        print(f'{self} has destroyed {target}' )
-        self.job = 0
-        target.destroy()
+        if len(target_list) > 0:
+            target = self.pick_target(target_list)
+            print(f'{self} has destroyed {target}' )
+            self.job = 0
+            target.destroy()
+        else: 
+            print(f'{self} cannot find a target')
         self.idle_behavior()
 
     def explore_behavior(self):
