@@ -217,6 +217,7 @@ def get_object_by_id(world_data,id):
     for obj in world_data['object']:
         if(obj.gid == id):
             return obj
+    print(f'Looking for ID: {id} in object list: {world_data['object']}')
     raise Exception('game object not found')
 
 def remove_event_from_world_data(world_data,event,current_day):
