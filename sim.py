@@ -48,6 +48,11 @@ class world_object():
         #TODO:
         ##verify this works 
         ### unschedule ALL as well
+        checkDays = list(world_data['schedule'].keys())
+        for day in checkDays:
+            for event in day: 
+                if event[0] == self.gid
+                day.remove(event)
         print(f'{self} has been destroyed!')
 
 class ship(world_object):
@@ -217,6 +222,7 @@ def get_object_by_id(world_data,id):
     for obj in world_data['object']:
         if(obj.gid == id):
             return obj
+    print(f'world schedule keys {list(world_data['schedule'].keys())}')
     print(f'Looking for ID: {id} in object list: {world_data['object']}')
     raise Exception('game object not found')
 
