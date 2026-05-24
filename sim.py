@@ -42,17 +42,14 @@ class world_object():
         print(f'Object {self.name} processes {event}')
 
     def destroy(self):
-        #any object can be destroyed! 
         #remove object from world data 
         world_data['object'].remove(self)
-        #TODO:
-        ##verify this works 
         ### unschedule ALL as well
         checkDays = list(world_data['schedule'].keys())
         for day in checkDays:
-            for event in day: 
-                if event[0] == self.gid
-                day.remove(event)
+            for event in world_data['schedule'][day]: 
+                if event[0] == self.gid:
+                    world_data['schedule'][day].remove(event)
         print(f'{self} has been destroyed!')
 
 class ship(world_object):
@@ -106,8 +103,8 @@ class ship(world_object):
         #self.schedule(2,'end_combat')
         #get targets
         target_list = get_objects_with_location(self.location)
-        if len(target_list) > 0:
-            target = self.pick_target(target_list)
+        target = self.pick_target(target_list)
+        if target != None:
             print(f'{self} has destroyed {target}' )
             self.job = 0
             target.destroy()
@@ -153,7 +150,12 @@ class ship(world_object):
 
     def pick_target(self,targetList):
         #in the future this should be random or based on another attribute
-        return targetList[0]
+        result = None
+        if targetList[0].gid != self.gid: 
+            result = targetList[0]
+        elif len(targetList) > 1:
+            result = targetList[1]
+        return result 
 
 
     def idle_behavior(self):
