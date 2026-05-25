@@ -49,7 +49,12 @@ class world_object():
         for day in checkDays:
             for event in world_data['schedule'][day]: 
                 if event[0] == self.gid:
-                    world_data['schedule'][day].remove(event)
+                    print(world_data['schedule'])
+                    print(f'stuff to delete {day} {event}')
+                    print('after delete')
+                    remove_event_from_world_data(world_data,event,day)
+                    print(world_data['schedule'])
+                    #world_data['schedule'][day].remove(event)
         print(f'{self} has been destroyed!')
 
 class ship(world_object):
