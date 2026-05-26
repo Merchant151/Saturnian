@@ -49,9 +49,9 @@ class world_object():
         for day in checkDays:
             for event in world_data['schedule'][day]: 
                 if event[0] == self.gid:
-                    print(world_data['schedule'])
-                    print(f'stuff to delete {day} {event}')
-                    print('after delete')
+                    #print(world_data['schedule'])
+                    #print(f'stuff to delete {day} {event}')
+                    #print('after delete')
                     remove_event_from_world_data(world_data,event,day)
                     print(world_data['schedule'])
                     #world_data['schedule'][day].remove(event)
@@ -245,6 +245,8 @@ def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
         print('event_today: ',end='')
         todays_events = world_data['schedule'][current_day]
+        print('printing todays events')
+        print(todays_events)
         number_of_events = len(todays_events)
         for i in range(number_of_events):
             id,event = todays_events[0]
