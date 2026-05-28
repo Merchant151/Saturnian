@@ -167,11 +167,12 @@ class ship(world_object):
         #TODO: 
         #change this to schedule behavior 
         print(f'the ship:{self.gid} will begin repairs')
+        self.schedule(10,'idle_behavior')
 
     def travel_drive(destination):
         print(f'ship is traveling from {self.location[1]} at {self.location[0]} to {destination[1]} at {destination[0]}')
         self.status = 'travel'
-        schedule()
+        #schedule()
 
 def next_id():
     global gid
@@ -243,12 +244,10 @@ def remove_event_from_world_data(world_data,event,current_day):
 
 def check_date(current_day,world_data):
     if current_day in world_data['schedule']:
-        print('event_today: ',end='')
+        #print('there are events today ')
         todays_events = world_data['schedule'][current_day]
-        print('printing todays events')
-        print(todays_events)
-        number_of_events = len(todays_events)
-        for i in range(number_of_events):
+        i = 0
+        while i < len(todays_events):
             id,event = todays_events[0]
             actor = get_object_by_id(world_data, id)
             #do event change status...
