@@ -137,6 +137,8 @@ class ship(world_object):
         self.location = (dest,'orbit')        
 
     def process_event(self,event):
+        #TODO: 
+        #MAKE SURE THIS MAKES SENSE
         print(f'Object {self.name} processes {event}')
         jobList = ['end_combat','end_science']
         if (event == 'end_explore'):
@@ -163,11 +165,9 @@ class ship(world_object):
         return result 
 
 
-    def idle_behavior(self):
-        #TODO: 
-        #change this to schedule behavior 
+    def idle_behavior(self,durration = 10):
         print(f'the ship:{self.gid} will begin repairs')
-        self.schedule(10,'idle_behavior')
+        self.schedule(durration,'idle_behavior')
 
     def travel_drive(destination):
         print(f'ship is traveling from {self.location[1]} at {self.location[0]} to {destination[1]} at {destination[0]}')
