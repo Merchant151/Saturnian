@@ -84,7 +84,7 @@ class ship(world_object):
     def pickBehavior(self):
         if self.job >= self.explore:
             self.job_behavior()
-        elif self.idle <= self.explore:
+        elif self.explore >= self.idle:
             self.explore_behavior()
         else: 
             self.idle_behavior()
@@ -92,16 +92,21 @@ class ship(world_object):
     def job_behavior(self):
         print(f'the ship:{self.gid} will do {self.type} job')
         if self.type == 'construction':
-            self.construction_behavior()
+            self.schedule(300,'end_construction')
+           #self.construction_behavior()
         if self.type == 'science':
-            self.science_behavior()
+            self.schedule(35,'end_science')
+           #self.science_behavior()
         if self.type == 'combat':
-            self.combat_behavior()
+            self.schedule(3,'end_combat')
+           #self.combat_behavior()
 
     def construction_behavior(self):
+        print(f'construction complete')
         self.schedule(6,'end_construction')
 
     def science_behavior(self):
+        print(f'science complete')
         self.schedule(6,'end_science')
 
     def combat_behavior(self):
@@ -115,7 +120,7 @@ class ship(world_object):
             target.destroy()
         else: 
             print(f'{self} cannot find a target')
-        self.idle_behavior()
+        #self.idle_behavior()
 
     def explore_behavior(self):
         self.schedule(6,'end_explore')
@@ -139,14 +144,14 @@ class ship(world_object):
     def process_event(self,event):
         #TODO: 
         #MAKE SURE THIS MAKES SENSE
-     
 
-        ''' This Function has three steps and is triggered on its scheudle day... 
-        depending on event type ship modifies its behavior profile currently set by integer values
-        then we process the event complete it or complete the step 
-            '''
+       # ''' This Function has three steps and is triggered on its scheudle day... 
+       # depending on event type ship modifies its behavior profile currently set by integer values
+       # then we process the event complete it or complete the step 
+       #    '''
         print(f'Object {self.name} processes {event}')
-        jobList = ['end_combat','end_science']
+        #MAKE THIS GLOBAL probably
+        jobList = ['end_construction','end_combat','end_science']
         if (event == 'end_explore'):
             self.explore = 0 
             self.job +=1
@@ -156,8 +161,10 @@ class ship(world_object):
             self.job = 0
             self.explore = 0
             ### MISSING JOB PROCESSING
+            self.do_job()
             self.idle_behavior()
         else: 
+            #this is triggered when IDLE is complete 
             self.job += 1
             self.explore += 1
             self.pickBehavior()
