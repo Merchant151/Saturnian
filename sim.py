@@ -139,6 +139,12 @@ class ship(world_object):
     def process_event(self,event):
         #TODO: 
         #MAKE SURE THIS MAKES SENSE
+     
+
+        ''' This Function has three steps and is triggered on its scheudle day... 
+        depending on event type ship modifies its behavior profile currently set by integer values
+        then we process the event complete it or complete the step 
+            '''
         print(f'Object {self.name} processes {event}')
         jobList = ['end_combat','end_science']
         if (event == 'end_explore'):
@@ -147,8 +153,9 @@ class ship(world_object):
             self.random_travel()
             self.pickBehavior()
         elif event in jobList: 
-            self.job =0
+            self.job = 0
             self.explore = 0
+            ### MISSING JOB PROCESSING
             self.idle_behavior()
         else: 
             self.job += 1
