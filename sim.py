@@ -161,13 +161,16 @@ class ship(world_object):
             self.job = 0
             self.explore = 0
             ### MISSING JOB PROCESSING
-            self.do_job()
+            self.do_job(event)
             self.idle_behavior()
         else: 
             #this is triggered when IDLE is complete 
             self.job += 1
             self.explore += 1
             self.pickBehavior()
+
+    def do_job(self,job):
+        print(f'job done {job}')
 
     def pick_target(self,targetList):
         #in the future this should be random or based on another attribute
