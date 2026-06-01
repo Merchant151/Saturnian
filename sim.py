@@ -170,7 +170,17 @@ class ship(world_object):
             self.pickBehavior()
 
     def do_job(self,job):
+        #TODO:
+        #WORKING ON THIS 
         print(f'job done {job}')
+        if (job == 'end_combat'):
+            self.combat_behavior()
+        elif job == 'end_science':
+            print(f'ERROR IMPLEMENT END SCIENCE')
+        elif job == 'end_construction':
+            print("ERROR IMPLEMENT END CONSTRUCTION")
+        else: 
+            raise Exception(f'{job} processing for object not implemented') 
 
     def pick_target(self,targetList):
         #in the future this should be random or based on another attribute
