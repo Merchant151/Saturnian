@@ -53,7 +53,7 @@ class world_object():
                     #print(f'stuff to delete {day} {event}')
                     #print('after delete')
                     remove_event_from_world_data(world_data,event,day)
-                    print(world_data['schedule'])
+                    #print(world_data['schedule'])
                     #world_data['schedule'][day].remove(event)
         print(f'{self} has been destroyed!')
 
