@@ -102,12 +102,12 @@ class ship(world_object):
            #self.combat_behavior()
 
     def construction_behavior(self):
+        print("ERROR IMPLEMENT END CONSTRUCTION")
         print(f'construction complete')
-        self.schedule(6,'end_construction')
 
     def science_behavior(self):
+        print(f'ERROR IMPLEMENT END SCIENCE')
         print(f'science complete')
-        self.schedule(6,'end_science')
 
     def combat_behavior(self):
         #self.schedule(2,'end_combat')
@@ -176,9 +176,9 @@ class ship(world_object):
         if (job == 'end_combat'):
             self.combat_behavior()
         elif job == 'end_science':
-            print(f'ERROR IMPLEMENT END SCIENCE')
+            self.science_behavior()
         elif job == 'end_construction':
-            print("ERROR IMPLEMENT END CONSTRUCTION")
+            self.construction_behavior()
         else: 
             raise Exception(f'{job} processing for object not implemented') 
 
