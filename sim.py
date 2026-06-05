@@ -93,19 +93,19 @@ class ship(world_object):
         print(f'the ship:{self.gid} will do {self.type} job')
         if self.type == 'construction':
             self.schedule(300,'end_construction')
-           #self.construction_behavior()
         if self.type == 'science':
             self.schedule(35,'end_science')
-           #self.science_behavior()
         if self.type == 'combat':
             self.schedule(3,'end_combat')
-           #self.combat_behavior()
 
     def construction_behavior(self):
-        print("ERROR IMPLEMENT END CONSTRUCTION")
+        #TODO: not urgent
+        #for now construction ships will build other ships. 
+        world_data['object'].append(spawn_ship())
         print(f'construction complete')
 
     def science_behavior(self):
+        #TODO: not urgent
         print(f'ERROR IMPLEMENT END SCIENCE')
         print(f'science complete')
 
