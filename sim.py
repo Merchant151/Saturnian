@@ -102,7 +102,7 @@ class ship(world_object):
         #TODO: not urgent
         #for now construction ships will build other ships. 
         world_data['object'].append(spawn_ship())
-        print(f'construction complete')
+        print(f'ship construction complete')
 
     def science_behavior(self):
         #TODO: not urgent
