@@ -57,8 +57,11 @@ class world_object():
                     #world_data['schedule'][day].remove(event)
         print(f'{self} has been destroyed!')
 
+class station(world_object):
+    def __init__(self):
+        pass
+
 class ship(world_object):
-    #TODO: working on this
     def __init__(self):
         super().__init__()
         self.type = self.random_type()
