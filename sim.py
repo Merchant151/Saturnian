@@ -57,8 +57,16 @@ class world_object():
                     #world_data['schedule'][day].remove(event)
         print(f'{self} has been destroyed!')
 
+class faction():
+    def __init__(self):
+        pass
+
 class station(world_object):
     def __init__(self):
+        pass
+
+    def post_job(self):
+        #station posts jobs to do
         pass
 
 class ship(world_object):
