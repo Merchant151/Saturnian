@@ -153,8 +153,6 @@ class ship(world_object):
         self.location = (dest,'orbit')        
 
     def process_event(self,event):
-        #TODO: 
-        #MAKE SURE THIS MAKES SENSE
 
        # ''' This Function has three steps and is triggered on its scheudle day... 
        # depending on event type ship modifies its behavior profile currently set by integer values
@@ -181,8 +179,6 @@ class ship(world_object):
             self.pickBehavior()
 
     def do_job(self,job):
-        #TODO:
-        #WORKING ON THIS 
         print(f'job done {job}')
         if (job == 'end_combat'):
             self.combat_behavior()
@@ -262,6 +258,9 @@ def prefix():
     world["locale"] = planet
     world["object"] = []
     world["schedule"] = {}
+    world["commission"] = []
+    #create a test commission
+    world["commission"].append({"contractor":"faction","contract":"build faction HQ","type":"Construction"})
     return world
 
 def get_object_by_id(world_data,id):
