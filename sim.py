@@ -92,6 +92,11 @@ class ship(world_object):
         return 'ship'
 
 
+    def commission_check():
+    #TODO:
+    #build this
+        pass
+
     def pickBehavior(self):
         if self.job >= self.explore:
             self.job_behavior()
