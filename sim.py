@@ -42,16 +42,12 @@ class world_object():
         print(f'Object {self.name} processes {event}')
 
     def destroy(self):
-        #remove object from world data 
         world_data['object'].remove(self)
-        ### unschedule ALL as well
         checkDays = list(world_data['schedule'].keys())
         for day in checkDays:
             for event in world_data['schedule'][day]: 
                 if event[0] == self.gid:
-                    #print(world_data['schedule'])
                     #print(f'stuff to delete {day} {event}')
-                    #print('after delete')
                     remove_event_from_world_data(world_data,event,day)
                     #print(world_data['schedule'])
                     #world_data['schedule'][day].remove(event)
@@ -92,10 +88,25 @@ class ship(world_object):
         return 'ship'
 
 
-    def commission_check():
-    #TODO:
-    #build this
-        pass
+    def choose_commission():
+        #TODO:
+        #build this
+        #commission check must match several feilds 
+        #allowed faciton 
+        #commission Type
+        #unassigned 
+        global world_data
+        commissions = world_data['commission']
+        out_list = []
+        if len(commissions) > 0: 
+            for c in commissions:
+                status = True
+                if c['assigned'] != None:
+                    status = False
+                if status: 
+                    return commsission
+        else: 
+            return None
 
     def pickBehavior(self):
         if self.job >= self.explore:
