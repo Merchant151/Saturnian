@@ -104,6 +104,7 @@ class ship(world_object):
                 if c['assigned'] != None:
                     status = False
                 if status: 
+                    print('commission found')
                     return commsission
         else: 
             return None
