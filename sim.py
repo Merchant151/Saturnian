@@ -73,6 +73,7 @@ class ship(world_object):
         self.idle = randrange(0,10) 
         self.explore = randrange(0,10)
         self.job = randrange(0,10)
+        self.commission = randrange(0,10)
         #pick starting behavior 
         self.pickBehavior()
 
@@ -90,6 +91,7 @@ class ship(world_object):
 
     def choose_commission():
         #TODO:
+        #ADD adjustments for other class goal values
         #build this
         #commission check must match several feilds 
         #allowed faciton 
@@ -110,6 +112,9 @@ class ship(world_object):
             return None
 
     def pickBehavior(self):
+        #TODO: URGENT add commission
+        if self.commission >= self.job:
+            self.choose_commission()
         if self.job >= self.explore:
             self.job_behavior()
         elif self.explore >= self.idle:
