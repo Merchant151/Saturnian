@@ -103,11 +103,11 @@ class ship(world_object):
         if len(commissions) > 0: 
             for c in commissions:
                 status = True
-                if c['assigned'] != None:
+                if c['assigned'] != None or c['type'] != self.type:
                     status = False
                 if status: 
                     print('commission found')
-                    return commsission
+                    return c
         else: 
             return None
 
@@ -282,7 +282,7 @@ def prefix():
     world["schedule"] = {}
     world["commission"] = []
     #create a test commission
-    world["commission"].append({"contractor":"faction","contract":"build faction HQ","type":"Construction"})
+    world["commission"].append({"id":next_id(),"contractor":"faction","contract":"build faction HQ","type":"construction","assigned":None})
     return world
 
 def get_object_by_id(world_data,id):
