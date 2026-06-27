@@ -89,7 +89,7 @@ class ship(world_object):
         return 'ship'
 
 
-    def choose_commission():
+    def choose_commission(self):
         #TODO:
         #ADD adjustments for other class goal values
         #build this
