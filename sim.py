@@ -111,10 +111,21 @@ class ship(world_object):
         else: 
             return None
 
+    #TODO: COmmission behavior should work like any other behavior scheduler: 
+    def commission_behavior(self): 
+        commission = self.choose_commission()
+        if commission is not None: 
+            #TODO:
+            #RESERVE Commission! 
+            self.schedule(1,'do_commission')
+        else: 
+            self.job_behavior()
+
     def pickBehavior(self):
         #TODO: URGENT add commission
         if self.commission >= self.job:
-            self.choose_commission()
+            self.commission_behavior()
+            #self.choose_commission() # MOVED INTO BEHAVIOR 
         if self.job >= self.explore:
             self.job_behavior()
         elif self.explore >= self.idle:
